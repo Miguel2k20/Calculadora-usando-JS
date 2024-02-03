@@ -18,8 +18,10 @@ function mudarMode(){
     }
 }
 function miniClear() {
-    operacao = operacao.toString().slice(0, -1)
-    resultadoTela.value = operacao
+    if (operacao !== '') {
+        operacao = operacao.slice(-1) === " " ? operacao.slice(0, -3) : operacao.slice(0, -1);
+        resultadoTela.value = operacao;
+    }
 }
 function clearResult() {
     operacao = ""
@@ -27,16 +29,18 @@ function clearResult() {
     resultadoTela.value = operacao
 }
 function numberIncrement(valor){
-    operacao = operacao + valor
-    resultadoTela.value = operacao
+    if(typeof operacao === 'string' || operacao == '') {
+        operacao = operacao + valor
+        resultadoTela.value = operacao
+    }
 }
 function operatorIncrement(valor) {
-    let validate = operacao.toString().charAt(operacao.length - 1);
-    if(isNaN(parseInt(validate))){
-        operacao = operacao.slice(0, -3)
-    } 
-    operacao = operacao + ' ' + valor + ' '
-    resultadoTela.value = operacao
+    if (operacao !== '') {
+        const lastChar = operacao.charAt(operacao.length - 1);
+        operacao = isNaN(parseInt(lastChar)) ? operacao.slice(0, -3) : operacao;
+        operacao = `${operacao} ${valor} `;
+        resultadoTela.value = operacao;
+    }
 }
 function resultado() {
     historico.innerText = operacao
