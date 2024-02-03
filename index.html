@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+   <div class="calculadora" id="calculadora">
+       <div class="tela">
+            <div onclick="mudarMode()" class="mode" id="mode">
+                <div class="icon">
+                    <i class="bi bi-sun"></i>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-moon"></i>
+                </div>
+            </div>
+            <div id="historico" class="historico">0</div>
+            <input type="text" id="resultado" value="" oninput="inputValidate(this)">
+        </div>
+        <div class="botoes">
+            <div class="numeros">
+                <button onclick="numberIncrement(9)">9</button>
+                <button onclick="numberIncrement(8)">8</button>
+                <button onclick="numberIncrement(7)">7</button>
+                <button onclick="numberIncrement(6)">6</button>
+                <button onclick="numberIncrement(5)">5</button>
+                <button onclick="numberIncrement(4)">4</button>
+                <button onclick="numberIncrement(3)">3</button>
+                <button onclick="numberIncrement(2)">2</button>
+                <button onclick="numberIncrement(1)">1</button>
+                <button onclick="numberIncrement('.')">,</button>
+                <button onclick="numberIncrement(0)">0</button>
+                <button onclick="resultado()">=</button>
+            </div>
+            <div class="operadores">
+                <button onclick="clearResult()">del</button>
+                <button id="botaoDeletar" onclick="miniClear()"><i class="bi bi-arrow-left"></i></button>
+                <button onclick="operatorIncrement('/')">%</button>
+                <button onclick="operatorIncrement('*')">X</button>
+                <button onclick="operatorIncrement('-')">-</button>
+                <button onclick="operatorIncrement('+')">+</button>
+            </div>
+        </div>
+   </div>
+</body>
+<script src="./script.js"></script>
+</html>
