@@ -36,16 +36,19 @@ function numberIncrement(valor){
 }
 function operatorIncrement(valor) {
     if (operacao !== '') {
-        const lastChar = operacao.charAt(operacao.length - 1);
+        const lastChar = operacao.toString().charAt(operacao.length - 1);
         operacao = isNaN(parseInt(lastChar)) ? operacao.slice(0, -3) : operacao;
         operacao = `${operacao} ${valor} `;
         resultadoTela.value = operacao;
     }
 }
 function resultado() {
-    historico.innerText = operacao
-    operacao = eval(operacao)
-    resultadoTela.value = operacao
+    if(operacao != "" && operacao.toString().slice(-1) !== " ") 
+    {
+        historico.innerText = operacao
+        operacao = eval(operacao)
+        resultadoTela.value = operacao
+    }   
 }
 function inputValidate(input){
     input.value = input.value.replace(/\D/g, '');
